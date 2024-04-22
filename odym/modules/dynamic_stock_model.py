@@ -206,13 +206,21 @@ class DynamicStockModel(object):
         
     def compute_sf(self): # survival functions
         """
-        Survival table self.sf(m,n) denotes the share of an inflow in year n (age-cohort) still present at the end of year m (after m-n years).
-        The computation is self.sf(m,n) = ProbDist.sf(m-n), where ProbDist is the appropriate scipy function for the lifetime model chosen.
-        For lifetimes 0 the sf is also 0, meaning that the age-cohort leaves during the same year of the inflow.
-        The method compute outflow_sf returns an array year-by-cohort of the surviving fraction of a flow added to stock in year m (aka cohort m) in in year n. This value equals sf(n,m).
-        This is the only method for the inflow-driven model where the lifetime distribution directly enters the computation. All other stock variables are determined by mass balance.
-        The shape of the output sf array is NoofYears * NoofYears, and the meaning is years by age-cohorts.
-        The method does nothing if the sf alreay exists. For example, sf could be assigned to the dynamic stock model from an exogenous computation to save time.
+        Survival table self.sf(m,n) denotes the share of an inflow in year n 
+        (age-cohort) still present at the end of year m (after m-n years). 
+        The computation is self.sf(m,n) = ProbDist.sf(m-n), where ProbDist is
+        the appropriate scipy function for the lifetime model chosen.
+        For lifetimes 0 the sf is also 0, meaning that the age-cohort leaves 
+        during the same year of the inflow. The method compute outflow_sf 
+        returns an array year-by-cohort of the surviving fraction of a flow 
+        added to stock in year m (aka cohort m) in in year n. This value equals
+        sf(n,m). This is the only method for the inflow-driven model where the
+        lifetime distribution directly enters the computation. All other stock
+        variables are determined by mass balance. The shape of the output sf 
+        array is NoofYears * NoofYears, and the meaning is years by age-cohorts.
+        The method does nothing if the sf alreay exists. For example, sf could 
+        be assigned to the dynamic stock model from an exogenous computation to
+        save time.
         """
         if self.sf is None:
             self.sf = np.zeros((len(self.t), len(self.t)))

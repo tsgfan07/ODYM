@@ -269,7 +269,19 @@ def ParseModelControl(Model_Configsheet,ScriptConfig):
 
 
 def ParseClassificationFile_Main(Classsheet,Mylog):
-    """ Parse the ODYM classification file, format version 
+    """  Parse the ODYM classification file, format version 
+
+    Parameters
+    ----------
+    Classsheet : _type_
+        Excel sheet
+    Mylog : _type_
+        _description_
+
+    Returns
+    -------
+    dict
+        dict of msc.Classifications
     """
     ci = 2  # column index to start with
     MasterClassification = {}  # Dict of master classifications
@@ -430,8 +442,36 @@ def ParseConfigFile(Model_Configsheet,ScriptConfig,Mylog):
 
 def ReadParameter(ParPath, ThisPar, ThisParIx, IndexMatch, ThisParLayerSel, MasterClassification,
                   IndexTable, IndexTable_ClassificationNames, ScriptConfig, Mylog):
-    """
+    """  
     This function reads a model parameter from the corresponding parameter file
+
+    Parameters
+    ----------
+    ParPath : _type_
+        _description_
+    ThisPar : _type_
+        _description_
+    ThisParIx : _type_
+        _description_
+    IndexMatch : _type_
+        _description_
+    ThisParLayerSel : _type_
+        _description_
+    MasterClassification : _type_
+        _description_
+    IndexTable : _type_
+        _description_
+    IndexTable_ClassificationNames : _type_
+        _description_
+    ScriptConfig : _type_
+        _description_
+    Mylog : _type_
+        _description_
+
+    Returns
+    -------
+    _type_
+        _description_
     """
     Parfile   = xlrd.open_workbook(ParPath + '.xlsx')
     ParHeader = Parfile.sheet_by_name('Cover')
@@ -937,8 +977,10 @@ def ReadParameterV2(ParPath, ThisPar, ThisParIx, IndexMatch, ThisParLayerSel, Ma
     else:
         return MetaData, Values
     
-def ReadParameterXLSX(ParPath, ThisPar, ThisParIx, IndexMatch, ThisParLayerSel, ThisParProcMethod, MasterClassification,
-                    IndexTable, IndexTable_ClassificationNames, ScriptConfig, Mylog, ParseUncertainty):
+def ReadParameterXLSX(ParPath, ThisPar, ThisParIx, 
+                      IndexMatch, ThisParLayerSel, ThisParProcMethod, 
+                      MasterClassification,IndexTable, IndexTable_ClassificationNames, 
+                      ScriptConfig, Mylog, ParseUncertainty):
     """
     This function reads a model parameter from the corresponding parameter file and used openpyxl
     """

@@ -17,3 +17,5 @@ import matplotlib.pyplot as plt
 import imp
 from copy import deepcopy
 import getpass
+import tqdm
+import ipykernel

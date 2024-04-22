@@ -183,7 +183,8 @@ class MFAsystem(Obj):
         add a '->' and the index letters for time and element (here, t and e), 
         and call the Einstein sum function np.einsum with the string 'tODGme->te', 
         and apply it to the flow values. 
-        Sum to t and e is subtracted from process where flow is leaving from and added to destination process.
+        Sum to t and e is subtracted from process where flow is leaving from and added 
+        to destination process.
         """
         Bal = np.zeros((len(self.Time_L),len(self.ProcessList),len(self.Elements))) # Balance array: years x process x element: 
         #process position 0 is the balance for the system boundary, the other positions are for the processes, 
